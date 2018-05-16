@@ -14,5 +14,11 @@ class Member_table(db.Model):
     password = db.Column(db.String(255), nullable=False)
     picture = db.Column(db.String(255))
 
+    def __init__(self, account_name, username, password, picture):
+        self.account_name = account_name
+        self.username = username
+        self.password = password
+        self.picture = picture
+
     def __repr__(self):
-        return '<Member_table %r>' % self.username
+        return "<Username: {}>".format(self.account_name)
