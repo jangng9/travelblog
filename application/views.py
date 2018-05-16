@@ -1,5 +1,6 @@
 from flask import render_template, flash, redirect, session, request, url_for
-from models import Member_table, db
+from travelblog import application
+from application.models import Member_table, db
 import os
 
 @app.route('/')
