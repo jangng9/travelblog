@@ -21,16 +21,16 @@ class Member_table(db.Model):
     password = db.Column(db.String(255), nullable=False)
     picture = db.Column(db.String(255))
 
-    def __init__(self, account_name, username, password, picture)
+    def __init__(self, account_name, username, password, picture):
+        self.account_name = account_name
         self.username = username
         self.password = password
-        self.account_name = account_name
         self.picture = picture
 
     def __repr__(self):
-        return "<Username: {}".format(self.username)
+        return "<Username: {}>".format(self.username)
 
-"""
+'''
 class Favourite_table(db.Model):
     """User Favourite"""
     __tablename__ = 'FAVORITE'
@@ -55,5 +55,5 @@ class User_Fav_table(db.Model):
 
     MEMBER = relationship('Member_table')
     FILE_NAME = relationship('File_Name_table')
-"""
+'''
 
