@@ -15,4 +15,4 @@ class Member_table(db.Model):
     picture = db.Column(db.String(255))
 
     def __repr__(self):
-        return '<Member_table %r %r>' % (self.account_name, self.username)
+        return '<Member_table %r>' % self.username

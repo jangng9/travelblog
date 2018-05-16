@@ -1,8 +1,7 @@
-from travelblog import application
-from flask import render_template, flash, redirect, session, request, url_for
+from flask import Flask, render_template, flash, redirect, session, request, url_for
 from models import Member_table, db
 import os
-
+ 
 @app.route('/')
 
 @app.route('/index.html')
@@ -30,8 +29,3 @@ def register():
             flash('Something wrong!, please try again. ', 'error')
     return render_template("register.html", error=error)
 
-@app.route('/logout')
-def logout():
-    session['username'] = ''
-    flash('You were logged out')
-    return redirect(url_for('index'))

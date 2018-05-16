@@ -3,7 +3,7 @@ import os
 
 app = Flask(__name__)
 app.debug = True
-import views
+import travelblog.views
 
 if __name__ == "__main__":
     app.run()

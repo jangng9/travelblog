@@ -3,10 +3,10 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 
-project_dir = os.path.dirname(os.path.abspath(__file__))
-database_file = "sqlite:///{}".format(os.path.join(project_dir, "travelblog.db"))
-
-app.config["SQLALCHEMY_DATABASE_URI"] = database_flie
+#project_dir = os.path.dirname(os.path.abspath(__file__))
+#database_file = "sqlite:///{}".format(os.path.join(project_dir, "travelblog.db"))
+ 
+app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///travelblog.db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
