@@ -12,25 +12,25 @@
     <form class="modal-content" method="POST" action="">
         <div class="login-container">
             <label for="rusername"><b>E-mail</b>
-            <input type="email" placeholder="example@gmail.com" id="rusername" required
+            <input type="email" placeholder="example@gmail.com" name="rusername" id="rusername" required
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ></label>
             <p id="warningEmail" class="invalid">Invalid Email</p>
 
             <label for="rname"><b>DisplayName</b>
-                <input type="text" placeholder="YourDisplayName" id="rname" minlength="4" required
+                <input type="text" placeholder="YourDisplayName" name="rname" id="rname" minlength="4" required
                 pattern="[A-Za-z0-9]{4,}">
             </label>
             <p id="warningName_num" class="invalid">Minimum 4 letters</p>
             <p id="warningName_char" class="invalid">Don't use Special Character</p>
 
             <label for="rpassword"><b>Password</b>
-            <input type="password" placeholder="Enter Password" id="rpassword" minlength="6" required
+            <input type="password" placeholder="Enter Password" name="rpassword" id="rpassword" minlength="6" required
             pattern=".{6,}">
             </label>
             <p id="warningPass" class="invalid">Minimum 6 letters</p>
 
             <label for="conpassword"><b>Confirm Password</b>
-            <input type="password" placeholder="Confirm Password" id="conpassword" minlength="6" required
+            <input type="password" placeholder="Confirm Password" name="conpassword" id="conpassword" minlength="6" required
             pattern=".{6,}">
             </label>
             <p id="warningConPass" class="invalid">Password doesn't match</p>
