@@ -47,7 +47,7 @@ def register():
             session['password'] = password
             flash(username)
             flash('Register Successfully', 'success')
-            return redirect(url_for('.login'))
+            return render_template("login.html")
         except Exception as e:
             db.session.rollback()
             flash(e)

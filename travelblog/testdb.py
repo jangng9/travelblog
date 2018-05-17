@@ -8,8 +8,8 @@ db = SQLAlchemy(app)
 class Member_table(db.Model):
     """User model."""
     __tablename__ = 'MEMBER'
-    account_name = db.Column(db.String(255),primary_key=True, nullable=False)
-    username = db.Column(db.String(255), nullable=False)
+    username = db.Column(db.String(255), primary_key=True, nullable=False)
+    account_name = db.Column(db.String(255), nullable=False)
     password = db.Column(db.String(255), nullable=False)
     picture = db.Column(db.String(255))
 
