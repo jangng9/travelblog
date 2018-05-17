@@ -8,7 +8,7 @@ from travelblog import app
 @app.route('/index.html')
 def index():
     username = session.get('username','')
-    return render_template("index.html")
+    return render_template("index.html", username=username)
     
 @app.route("/place_asiatique.html")
 def place_asiatique():
