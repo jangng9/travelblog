@@ -109,4 +109,8 @@ def type_natural():
 
 @app.route("/type_religious.html")
 def type_religious():
+<<<<<<< HEAD
     return render_template("type_religious .html")
+=======
+    return render_template("type_religious.html")
+>>>>>>> master

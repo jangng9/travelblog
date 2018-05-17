@@ -14,7 +14,7 @@ input[type=text], input[type=password], input[type=email] {
     box-sizing: border-box;
 }
 label {
-margin-top: 20px;
+    padding-top: 10px;
 }
 .login-container {
     padding: 20px;
@@ -47,11 +47,9 @@ button:hover {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
     margin: 0% auto 0% auto; /* 0% from the top, 0% from the bottom and centered */
-    border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 
