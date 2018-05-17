@@ -16,8 +16,7 @@ db.init_app(app)
 class Member_table(db.Model):
     """User model."""
     __tablename__ = 'MEMBER'
-    account_id = db.Column(db.Integer, primary_key=True)
-    account_name = db.Column(db.String(255), nullable=False)
+    account_name = db.Column(db.String(255),primary_key=True)
     username = db.Column(db.String(255), nullable=False)
     password = db.Column(db.String(255), nullable=False)
     picture = db.Column(db.String(255))
@@ -29,7 +28,7 @@ class Member_table(db.Model):
         self.picture = picture
 
     def __repr__(self):
-        return "<Username: {}>".format(self.username)
+        return "<Username: {}>".format(self.account_name)
 
 '''
 class Favourite_table(db.Model):
