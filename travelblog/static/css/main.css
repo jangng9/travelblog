@@ -463,7 +463,6 @@ a.read-more:hover{
 
 #footer {
   padding-bottom: 10px;
-  //background-image: url(../static/images/footer.png);
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: contain;
