@@ -7,7 +7,7 @@ from travelblog import app
 
 @app.route('/index.html')
 def index():
-    username = session.get('username', '')
+    username = session.get('username','')
     return render_template("index.html")
     
 @app.route("/place_asiatique.html")
@@ -140,13 +140,13 @@ def register():
             db.session.commit()
             session['username'] = username
             session['password'] = password
-            flash(username)
             flash('Register Successfully', 'success')
             return render_template("login.html")
         except:
             db.session.rollback()
             error = "Username or Password already exists."
             flash('Something Wrong!', 'error')
+            return render_template("register.html")
     return render_template("register.html", error=error)
 
 @app.route('/logout')
