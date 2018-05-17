@@ -10,6 +10,11 @@
 {% block body %}
 <div id="register_block">
     <form class="modal-content" method="POST" action="">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <h3>{{ messages }}</h3>
+                {% endif %}
+            {% endwith %}
         <div class="login-container">
             <label for="rusername"><b>E-mail</b>
             <input type="email" placeholder="example@gmail.com" name="rusername" id="rusername" required

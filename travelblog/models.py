@@ -35,7 +35,7 @@ class Favourite_table(db.Model):
     """User Favourite"""
     __tablename__ = 'FAVORITE'
     fav_id = db.Column(db.Integer, primary_key=True)
-    file_name = db.Column(db.String(255), nullable=False)    
+    file_name = db.Column(db.String(255), nullable=False)  
 
 class File_Name_table(db.Model):
     """File name"""
