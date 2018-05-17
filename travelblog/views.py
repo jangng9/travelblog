@@ -10,6 +10,10 @@ def index():
     username = session.get('username', '')
     return render_template("index.html")
 
+@app.route('/')
+def login():
+    return render_template('index.html')
+
 @app.route('/header.html', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
@@ -23,7 +27,7 @@ def register():
             session['username'] = username
             session['password'] = password
             flash('Register Successfully', 'success')
-            return redirect("index.html")
+            return redirect(url_for('.login'))
         except:
             db.session.rollback()
             error = "Username or Password already exists."
