@@ -10,7 +10,7 @@ def index():
     username = session.get('username', '')
     return render_template("index.html")
 
-@app.route('/header.html', method=['GET','POST'])
+@app.route('/header.html', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
         username = request.form['rusename']
