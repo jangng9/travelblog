@@ -1,0 +1,50 @@
+{% extends "header.html" %}
+{% block title %}Home | Roam{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+<div id="register_block" class="modal2">
+    <form class="modal-content animate" method="POST" action="">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('register_block').style.display='none'" class="close"
+                  title="Close Modal">&times;</span>
+            <img src="../static/images/logo.png" alt="logo" class="avatar">
+        </div>
+        <div class="login-container">
+            <label for="rusername"><b>E-mail</b>
+            <input type="email" placeholder="example@gmail.com" id="rusername" required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ></label>
+            <p id="warningEmail" class="invalid">Invalid Email</p>
+
+            <label for="rname"><b>DisplayName</b>
+                <input type="text" placeholder="YourDisplayName" id="rname" minlength="4" required
+                pattern="[A-Za-z0-9]{4,}">
+            </label>
+            <p id="warningName_num" class="invalid">Minimum 4 letters</p>
+            <p id="warningName_char" class="invalid">Don't use Special Character</p>
+
+            <label for="rpassword"><b>Password</b>
+            <input type="password" placeholder="Enter Password" id="rpassword" minlength="6" required
+            pattern=".{6,}">
+            </label>
+            <p id="warningPass" class="invalid">Minimum 6 letters</p>
+
+            <label for="conpassword"><b>Confirm Password</b>
+            <input type="password" placeholder="Confirm Password" id="conpassword" minlength="6" required
+            pattern=".{6,}">
+            </label>
+            <p id="warningConPass" class="invalid">Password doesn't match</p>
+
+            <button type="submit" id="Register" value="Submit">Register</button>
+        </div>
+        <div class="login-bottom">
+            <span class="fpsw" id="RForgetPass">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+{% endblock %}
