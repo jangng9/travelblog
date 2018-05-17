@@ -11,7 +11,26 @@ def index():
 
 @app.route('/')
 def login():
+<<<<<<< HEAD
     return render_template('index.html')
+=======
+    error = None
+    username = session.get('username','')
+    password = session.get('password','')
+    if request.method == 'POST':
+        users = Member_table.query.all()
+        for user in users:
+            if request.form['password'] == user.password and request.form['username'] == user.username:
+                flash('Login successfully.', 'success')
+                if username:
+                    session['username'] = username
+                else:
+                    session['username'] = request.form['username']
+                return redirect(url_for('.index'))
+            else:
+                error = 'Invalid username or password. Please try again.'
+    return render_template('login.html', error=error, username=username, password=password)
+>>>>>>> master
   
 
 @app.route('/register.html', methods=['GET','POST'])
