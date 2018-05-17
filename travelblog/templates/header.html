@@ -26,7 +26,7 @@
                                 <ul>
                                     <!--ล็อกอินอยู่ -->                                    
                                     {% if username %}
-                                    <li><a href="" class="button-login">Logout</a></li>
+                                    <li><a href="{{url_for('logout')}}" class="button-login">Logout</a></li>
                                     <li><a href="profile.html" class="button-login">{{ username }} |</a></li>
                                     <!-- ไม่ได้ล็อกอิน -->
                                     {% else %}
@@ -60,7 +60,7 @@
     {% block footer %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-center bottom-separator">
+            <div class="text-center bottom-separator">
                 <div class="foot-p">
                 <h3>About Us</h3>
                 <p>King Mongkut's Institute of Technology Ladkrabang,<br>
