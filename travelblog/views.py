@@ -4,7 +4,6 @@ import os
 from travelblog import app
  
 @app.route('/')
-
 @app.route('/index.html')
 def index():
     username = session.get('username', '')
