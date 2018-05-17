@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
-    <title></title>
+    <title>{% block title %}{% endblock %} - My Webpage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="../static/css/main.css" rel="stylesheet">
     <link href="../static/css/login.css" rel="stylesheet">
     <link href="../static/css/place.css" rel="stylesheet">
+    {% endblock %}
 </head>
 <body>
 <header id="header">
-    
+    {% block content %}
     <section id="page-breadcrumb">
         <div id="login_block" class="modal">
             <form class="modal-content animate" method="post" action="">
@@ -87,19 +89,21 @@
                     <td>
                         <div>
                             <div class="social-icons">
-                                 <!--ล็อกอินอยู่ -->
-                                {% if username %}
-                                 <ul>
-                                    <li><a href="{{ url_for('logout') }}" class="button-login">Logout</a></li>
-                                    <li><a href="profile.html" class="button-login">{{ username }} |</a></li>
-                                </ul>
-                                <!-- ไม่ได้ล็อกอิน -->
-                                {% else %}
+                                 
+                            
                                 <ul>
+                                    <!--ล็อกอินอยู่ -->
+                                    <!--{{ url_for('logout') }}-->
+                                    {% if username %}
+                                    <li><a href="" class="button-login">Logout</a></li>
+                                    <li><a href="profile.html" class="button-login">{{ username }} |</a></li>
+                                    <!-- ไม่ได้ล็อกอิน -->
+                                    {% else %}
                                     <li onclick="login()"><a href="#modal" class="button-login"> Login</a></li>
                                     <li onclick="register()"><a href="#modal" class="button-login"> Register |</a></li>
+                                    {% endif %}
                                 </ul>
-                                {% endif %}
+                                
                             </div>
                         </div>
                     </td>
@@ -118,7 +122,27 @@
         </div>
     </section>
     
+{% endblock %}
 </header>
-
+{% block body %}{% endblock %}
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center bottom-separator">
+                <div class="foot-p">
+                <h3>About Us</h3>
+                <p >King Mongkut's Institute of Technology Ladkrabang,<br>
+                            Chalongkrung Road, Ladkrabang, <br>
+                            Bangkok 10520 Thailand.
+                </p>
+                    <p>roam-official@roam.com</p>
+                    <p>&copy; 2018 by Nawaphorn, Phattarajaree and Mantana.</p>
+                </div>
+                <img class="foot-img" src="../static/images/home/under.png" alt="">
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="../static/js/controller.js"></script>
 </body>
 </html>
