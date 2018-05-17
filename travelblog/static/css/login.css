@@ -21,7 +21,6 @@ label {
 }
 
 .login-bottom{
-    background-color:#f1f1f1;
     border-radius: 20%;
     padding: 0 20px 20px 20px;
 }
@@ -47,8 +46,8 @@ button:hover {
 
 /* Modal Content/Box */
 .modal-content {
-    margin: 0% auto 0% auto; /* 0% from the top, 0% from the bottom and centered */
-    width: 30%; /* Could be more or less, depending on screen size */
+    margin: 0% auto 0% auto ; /* 0% from the top, 0% from the bottom and centered */
+    width: 30% ; /* Could be more or less, depending on screen size */
     margin-bottom: 50px;
 }
 
