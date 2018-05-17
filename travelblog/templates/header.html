@@ -23,8 +23,6 @@
                     <td>
                         <div>
                             <div class="social-icons">
-                    
-                            
                                 <ul>
                                     <!--ล็อกอินอยู่ -->                                    
                                     {% if username %}
@@ -57,14 +55,16 @@
     
 {% endblock %}
 </header>
+<<<<<<< HEAD
 {% block body %}{% endblock %}
 <footer id="footer">
+    {% block footer %}
     <div class="container">
         <div class="row">
             <div class="text-center bottom-separator">
                 <div class="foot-p">
                 <h3>About Us</h3>
-                <p >King Mongkut's Institute of Technology Ladkrabang,<br>
+                <p>King Mongkut's Institute of Technology Ladkrabang,<br>
                             Chalongkrung Road, Ladkrabang, <br>
                             Bangkok 10520 Thailand.
                 </p>
@@ -75,7 +75,13 @@
             </div>
         </div>
     </div>
+{% endblock %}  
 </footer>
+=======
+
+{% block body %}
+{% endblock %}
+>>>>>>> mp
 <script src="../static/js/controller.js"></script>
 </body>
 </html>
