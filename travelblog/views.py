@@ -1,5 +1,5 @@
 from flask import Flask, render_template, flash, redirect, session, request, url_for
-from models import Member_table, db
+from .models import Member_table, db
 import os
 from travelblog import app
  
