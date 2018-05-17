@@ -28,5 +28,5 @@ def register():
             db.session.rollback()
             error = "Username or Password already exists."
             flash('Something wrong!, please try again. ', 'error')
-    return render_template("register.html", error=error)
+    return render_template("index.html", error=error)
 
