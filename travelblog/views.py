@@ -12,9 +12,11 @@ def index():
 @app.route('/')
 def login():
     return render_template('index.html')
+  
 
 @app.route('/register.html', methods=['GET','POST'])
 def register():
+    error = None
     if request.method == 'POST':
         username = request.form['rusername']
         password = request.form['rpassword']
@@ -31,5 +33,5 @@ def register():
             db.session.rollback()
             error = "Username or Password already exists."
             flash('Something wrong!, please try again. ', 'error')
-    return render_template("index.html", error=error)
+    return render_template("register.html", error=error)
 
