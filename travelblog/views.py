@@ -28,7 +28,7 @@ def login():
             else:
                 error = 'Invalid username or password. Please try again.'
     return render_template('login.html', error=error, username=username, password=password)
-  
+    
 
 @app.route('/register.html', methods=['GET','POST'])
 def register():
@@ -37,18 +37,18 @@ def register():
         username = request.form['rusername']
         password = request.form['rpassword']
         name = request.form['rname']
+        picture = ""
         try:
-            new_user = Member_table(account_name = name, username = username, password = password)
+            new_user = Member_table(account_name = name, username = username, password = password, picture=picture)
             db.session.add(new_user)
             db.session.commit()
             session['username'] = username
             session['password'] = password
             flash('Register Successfully', 'success')
             return redirect(url_for('.login'))
-        except:
+        except Exception as e:
             db.session.rollback()
-            error = "Username or Password already exists."
-            flash('Something wrong!, please try again. ', 'error')
+            flash(e)
     return render_template("register.html", error=error)
 
 @app.route("/place_asiatique.html")

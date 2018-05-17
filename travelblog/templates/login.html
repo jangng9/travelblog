@@ -12,11 +12,13 @@
     <form class="modal-content" method="POST" action="">
         <div class="login-container">
             <b>E-mail</b>
-                <input type="email" placeholder="Enter E-mail as username" id="username" required>
+                <input type="email" placeholder="Enter E-mail as username" id="username" name="username" required
+                >
                 <p id="warningEmail_login" class="invalid">Invalid Email</p>
             
             <b>Password</b>
-            <input type="password" placeholder="Enter Password" id="password" required>
+            <input type="password" placeholder="Enter Password" id="password" name="password" required
+            >
             <button type="submit" id="Login">Login</button>
         </div>
         <div class="login-bottom">
