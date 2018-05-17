@@ -16,7 +16,7 @@ def login():
     username = session.get('username','')
     password = session.get('password','')
     if request.method == 'POST':
-        users = User.query.all()
+        users = Member_table.query.all()
         for user in users:
             if request.form['password'] == user.password and request.form['username'] == user.username:
                 flash('Login successfully.', 'success')
