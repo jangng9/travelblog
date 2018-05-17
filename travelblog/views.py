@@ -13,7 +13,7 @@ def index():
 @app.route('/header.html', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
-        username = request.form['rusename']
+        username = request.form['rusername']
         password = request.form['rpassword']
         name = request.form['rname']
         try:
@@ -23,7 +23,7 @@ def register():
             session['username'] = username
             session['password'] = password
             flash('Register Successfully', 'success')
-            return redirect(url_for('.login'))
+            return redirect("index.html")
         except:
             db.session.rollback()
             error = "Username or Password already exists."
