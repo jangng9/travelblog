@@ -8,24 +8,15 @@
 {% endblock %}
 
 {% block body %}
-<div id="login_block" class="modal">
-    <form class="modal-content animate" method="post" action="">
-        <div class="imgcontainer">
-            <span onclick="document.getElementById('login_block').style.display='none'" class="close"
-                  title="Close Modal">&times;</span>
-            <img src="../static/images/logo.png" alt="logo" class="avatar">
-        </div>
+<div id="login_block">
+    <form class="modal-content" method="POST" action="">
         <div class="login-container">
-            <label><b>E-mail</b>
+            <b>E-mail</b>
                 <input type="email" placeholder="Enter E-mail as username" id="username" required>
                 <p id="warningEmail_login" class="invalid">Invalid Email</p>
-            </label>
-
-            <label><b>Password</b>
+            
+            <b>Password</b>
             <input type="password" placeholder="Enter Password" id="password" required>
-            </label>
-
-
             <button type="submit" id="Login">Login</button>
         </div>
         <div class="login-bottom">
