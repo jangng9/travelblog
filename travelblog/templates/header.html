@@ -26,15 +26,14 @@
                     
                             
                                 <ul>
-                                    <!--ล็อกอินอยู่ -->
-                                    
+                                    <!--ล็อกอินอยู่ -->                                    
                                     {% if username %}
                                     <li><a href="" class="button-login">Logout</a></li>
                                     <li><a href="profile.html" class="button-login">{{ username }} |</a></li>
                                     <!-- ไม่ได้ล็อกอิน -->
                                     {% else %}
-                                    <li onclick="login()"><a href="login.html" class="button-login"> Login</a></li>
-                                    <li onclick="register()"><a href="register.html" class="button-login"> Register |</a></li>
+                                    <li><a href="login.html" class="button-login"> Login</a></li>
+                                    <li><a href="register.html" class="button-login"> Register |</a></li>
                                     {% endif %}
                                 </ul>
                                 

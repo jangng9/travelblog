@@ -1,23 +1,4 @@
 
-    function login(){
-        document.getElementById("login_block").style.display = "block";
-    }
-
-    function register(){
-        document.getElementById("register_block").style.display = "block";
-    }
-
-    // Get the modal
-    var modal = document.getElementById('login_block');
-    var modal2 = document.getElementById('register_block');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal || event.target == modal2) {
-            modal.style.display = "none";
-        }
-    }
-
     //Validate Before Register
     //When User Click
     var usernameInput = document.getElementById('rusername');
@@ -136,31 +117,15 @@
     //hover icon effect
 
     function hoverlike(element) {
-        element.setAttribute('src', 'images/home/liked.png');
+        element.setAttribute('src', '../static/images/home/liked.png');
     }
 
     function unhoverlike(element) {
-        element.setAttribute('src', 'images/home/like.png');
-    }
-
-    function hoverfacebook(element) {
-        element.setAttribute('src', 'images/home/facebooked.png');
-    }
-
-    function unhoverfacebook(element) {
-        element.setAttribute('src', 'images/home/facebook.png');
-    }
-
-    function hovertwitter(element) {
-        element.setAttribute('src', 'images/home/twittered.png');
-    }
-
-    function unhovertwitter(element) {
-        element.setAttribute('src', 'images/home/twitter.png');
+        element.setAttribute('src', '../static/images/home/like.png');
     }
 
     function hoveredit(element) {
-        element.setAttribute('src', 'images/home/penciled.png');
+        element.setAttribute('src', '../static/images/home/penciled.png');
     }
 
     function unhoveredit(element) {
