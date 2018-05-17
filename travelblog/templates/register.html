@@ -8,13 +8,8 @@
 {% endblock %}
 
 {% block body %}
-<div id="register_block" class="modal2">
-    <form class="modal-content animate" method="POST" action="">
-        <div class="imgcontainer">
-            <span onclick="document.getElementById('register_block').style.display='none'" class="close"
-                  title="Close Modal">&times;</span>
-            <img src="../static/images/logo.png" alt="logo" class="avatar">
-        </div>
+<div id="register_block">
+    <form class="modal-content" method="POST" action="">
         <div class="login-container">
             <label for="rusername"><b>E-mail</b>
             <input type="email" placeholder="example@gmail.com" id="rusername" required
