@@ -4,6 +4,7 @@ import os
 from travelblog import app
  
 @app.route('/')
+
 @app.route('/index.html')
 def index():
     username = session.get('username', '')
@@ -44,6 +45,7 @@ def register():
             db.session.commit()
             session['username'] = username
             session['password'] = password
+            flash(username)
             flash('Register Successfully', 'success')
             return redirect(url_for('.login'))
         except Exception as e:
@@ -53,76 +55,95 @@ def register():
 
 @app.route("/place_asiatique.html")
 def place_asiatique():
+    username = session.get('username', '')
     return render_template("place_asiatique.html")
 
 @app.route("/place_benjakiti.html")
 def place_benjakiti():
+    username = session.get('username', '')
     return render_template("place_benjakiti.html")
 
 @app.route("/place_dusit.html")
 def place_dusit():
+    username = session.get('username', '')
     return render_template("place_dusit.html")
 
 @app.route("/place_khlongladmayom.html")
 def place_khlongladmayom():
+    username = session.get('username', '')
     return render_template("place_khlongladmayom.html")
 
 @app.route("/place_museum_artinparadise.html")
 def place_museum_artinparadise():
+    username = session.get('username', '')
     return render_template("place_museum_artinparadise.html")
 
 @app.route("/place_museum_fabricqueen.html")
 def place_museum_fabricqueen():
+    username = session.get('username', '')
     return render_template("place_museum_fabricqueen.html")
 
 @app.route("/place_museum_nelsonlib.html")
 def place_museum_nelsonlib():
+    username = session.get('username', '')
     return render_template("place_museum_nelsonlib.html")
 
 @app.route("/place_museum_siriraj.html")
 def place_museum_siriraj():
+    username = session.get('username', '')
     return render_template("place_museum_siriraj.html")
 
 @app.route("/place_panaikrung.html")
 def place_panaikrung():
+    username = session.get('username', '')
     return render_template("place_panaikrung.html")
 
 @app.route("/place_rodfai.html")
 def place_rodfai():
+    username = session.get('username', '')
     return render_template("place_rodfai.html")
 
 @app.route("/place_suanluang.html")
 def place_suanluang():
+    username = session.get('username', '')
     return render_template("place_suanluang.html")
 
 @app.route("/place_watarun.html")
 def place_watarun():
+    username = session.get('username', '')
     return render_template("place_watarun.html")
 
 @app.route("/place_watbenjama.html")
 def place_watbenjama():
+    username = session.get('username', '')
     return render_template("place_watbenjama.html")
 
 @app.route("/place_watgloden.html")
 def place_watgloden():
+    username = session.get('username', '')
     return render_template("place_watgloden.html")
 
 @app.route("/place_watprakeaw.html")
 def place_watprakeaw():
+    username = session.get('username', '')
     return render_template("place_watprakeaw.html")
 
 @app.route("/type_art_museum.html")
 def type_art_museum():
+    username = session.get('username', '')
     return render_template("type_art_museum.html")
 
 @app.route("/type_market.html")
 def type_market():
+    username = session.get('username', '')
     return render_template("type_market.html")
 
 @app.route("/type_natural.html")
 def type_natural():
+    username = session.get('username', '')
     return render_template("type_natural.html")
 
 @app.route("/type_religious.html")
 def type_religious():
+    username = session.get('username', '')
     return render_template("type_religious.html")
