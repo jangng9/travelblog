@@ -34,7 +34,6 @@ def place_khlongladmayom():
 def place_museum_artinparadise():
     error = None
     username = session.get('username', '')
-<<<<<<< HEAD
     error = None
     count = 0
     if request.method == "POST":
@@ -56,9 +55,6 @@ def place_museum_artinparadise():
             error = "Can't like"
             flash('Can\'t like' , 'error')
             return flash
-=======
-    '''if request.method == 'POST':'''
->>>>>>> master
     return render_template("place_museum_artinparadise.html", username=username)
 
 @app.route("/place_museum_fabricqueen.html")
