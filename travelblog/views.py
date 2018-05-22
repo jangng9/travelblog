@@ -8,7 +8,8 @@ from travelblog import app
 @app.route('/index.html')
 def index():
     username = session.get('username','')
-    return render_template("index.html", username=username)
+    account_name = session.get('account_name','')
+    return render_template("index.html", username=username, account_name=account_name)
     
 @app.route("/place_asiatique.html")
 def place_asiatique():
@@ -109,8 +110,9 @@ app.secret_key = os.urandom(12)
 @app.route('/login.html', methods=['GET','POST'])
 def login():
     error = None
-    username = session.get('username','')
-    password = session.get('password','')
+    username = ''
+    password = ''
+    account_name = ''
     if request.method == 'POST':
         users = Member_table.query.all()
         for user in users:
@@ -118,12 +120,13 @@ def login():
                 flash('Login successfully.', 'success')
                 if username:
                     session['username'] = username
+                    session['account_name'] = account_name
                 else:
                     session['username'] = request.form['username']
                 return redirect(url_for('.index'))
             else:
                 error = 'Invalid username or password. Please try again.'
-    return render_template('login.html', error=error, username=username, password=password)
+    return render_template('login.html', error=error, username=username, password=password, account_name=account_name)
     
 
 @app.route('/register.html', methods=['GET','POST'])
@@ -132,14 +135,15 @@ def register():
     if request.method == 'POST':
         username = request.form['rusername']
         password = request.form['rpassword']
-        name = request.form['rname']
+        account_name = request.form['rname']
         picture = ""
         try:
-            new_user = Member_table(account_name = name, username = username, password = password, picture=picture)
+            new_user = Member_table(account_name = account_name, username = username, password = password, picture=picture)
             db.session.add(new_user)
             db.session.commit()
             session['username'] = username
             session['password'] = password
+            session['account_name'] = account_name
             flash('Register Successfully', 'success')
             return render_template("login.html")
         except:

@@ -26,7 +26,7 @@
                                 <ul>
                                     <!--ล็อกอินอยู่ -->                                    
                                     {% if username %}
-                                    <li><a href="{{url_for('logout')}}" class="button-login">Logout</a></li>
+                                    <li><a href="" class="button-login">Logout</a></li>
                                     <li><a href="profile.html" class="button-login">{{ username }} |</a></li>
                                     <!-- ไม่ได้ล็อกอิน -->
                                     {% else %}
@@ -55,33 +55,12 @@
     
 {% endblock %}
 </header>
-<<<<<<< HEAD
 {% block body %}{% endblock %}
-<footer id="footer">
-    {% block footer %}
-    <div class="container">
-        <div class="row">
-            <div class="text-center bottom-separator">
-                <div class="foot-p">
-                <h3>About Us</h3>
-                <p>King Mongkut's Institute of Technology Ladkrabang,<br>
-                            Chalongkrung Road, Ladkrabang, <br>
-                            Bangkok 10520 Thailand.
-                </p>
-                    <p>roam-official@roam.com</p>
-                    <p>&copy; 2018 by Nawaphorn, Phattarajaree and Mantana.</p>
-                </div>
-                <img class="foot-img" src="../static/images/home/under.png" alt="">
-            </div>
-        </div>
-    </div>
-{% endblock %}  
-</footer>
-=======
 
-{% block body %}
-{% endblock %}
->>>>>>> mp
+<footer id="footer"> 
+    <img class="foot-img" src="../static/images/footer.png" alt="" style="width:100%; height:100%;"> 
+</footer>
+
 <script src="../static/js/controller.js"></script>
 </body>
 </html>

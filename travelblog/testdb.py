@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from 
 
 app = Flask(__name__)                                 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///travelblog.db'
@@ -32,3 +33,14 @@ class File_Name_table(db.Model):
     
     def __repr__(self):
         return "<File_Name: {}>".format(self.file_name)
+
+
+class User_Fav_table(db.Model):
+    """User Favoutite."""
+    __tablename__ = 'USER_FAV'
+    user_fav_id = db.Column(db.Integer, primary_key=True)
+    account_id = db.Column(db.Integer, db.ForeignKey(MEMBER.account_id), nullable=False)
+    file_id = db.Column(db.Integer, db.ForeignKey(FILE_NAME.file_id), nullable=False)
+
+    MEMBER = relationship('Member_table')
+    FILE_NAME = relationship('File_Name_table')
