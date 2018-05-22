@@ -1,0 +1,33 @@
+{% extends "header.html" %}
+{% block title %}Login | Roam{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+<div id="login_block">
+    <form class="modal-content" method="POST" action="">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <h3>{{ messages }}</h3>
+                {% endif %}
+            {% endwith %}
+        <div class="login-container">
+            <label for="username"><b>E-mail</b></label>
+                <input type="email" placeholder="example@gmail.com" id="username" name="username" required>
+                <p id="warningEmail_login" class="invalid">Invalid Email</p>
+            
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="password" name="password" required>
+            <button type="submit" id="Login" value="Submit">Login</button>
+        </div>
+        <div class="login-bottom">
+            <span class="fpsw" id="ForgetPass">Forgot <a href="#">password?</a></span>
+        </div>
+        
+    </form>
+</div>
+{% endblock %}
