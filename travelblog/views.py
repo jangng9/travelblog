@@ -1,5 +1,5 @@
 from flask import Flask, render_template, flash, redirect, session, request, url_for
-from .models import Member_table, db
+from .models import Member_table, User_Fav_table, db
 import os
 from travelblog import app
  
@@ -30,9 +30,30 @@ def place_khlongladmayom():
     username = session.get('username', '')
     return render_template("place_khlongladmayom.html", username=username)
 
-@app.route("/place_museum_artinparadise.html")
+@app.route("/place_museum_artinparadise.html", methods=['GET','POST'])
 def place_museum_artinparadise():
     username = session.get('username', '')
+    error = None
+    count = 0
+    if request.method == "POST":
+        likes = User_Fav_table.query.all()
+        account_name = username
+        file_name = "place_museum_artinparadise"
+        for each_like in likes:
+            if file_name == each_like.file_name:
+                count = count + 1
+            return count
+        try:
+            new_like = User_Fav_table(account_name=account_name, file_name=file_name)
+            db.session.add(new_like)
+            db.session.commit()
+            flash('Like!','success')
+            return flash
+        except:
+            db.session.rollback()
+            error = "Can't like"
+            flash('Can\'t like' , 'error')
+            return flash
     return render_template("place_museum_artinparadise.html", username=username)
 
 @app.route("/place_museum_fabricqueen.html")
