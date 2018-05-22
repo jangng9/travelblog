@@ -19,7 +19,7 @@ def place_asiatique():
 @app.route("/place_benjakiti.html")
 def place_benjakiti():
     username = session.get('username', '')
-    return render_template("place_benjakiti.html", username=username
+    return render_template("place_benjakiti.html", username=username)
 
 @app.route("/place_dusit.html")
 def place_dusit():
