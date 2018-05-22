@@ -14,116 +14,97 @@ def index():
 @app.route("/place_asiatique.html")
 def place_asiatique():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_asiatique.html", username=username, account_name=account_name)
+    return render_template("place_asiatique.html", username=username)
 
 @app.route("/place_benjakiti.html")
 def place_benjakiti():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_benjakiti.html", username=username, name=name)
+    return render_template("place_benjakiti.html", username=username
 
 @app.route("/place_dusit.html")
 def place_dusit():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_dusit.html", username=username, name=name)
+    return render_template("place_dusit.html", username=username)
 
 @app.route("/place_khlongladmayom.html")
 def place_khlongladmayom():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_khlongladmayom.html", username=username, name=name)
+    return render_template("place_khlongladmayom.html", username=username)
 
 @app.route("/place_museum_artinparadise.html")
 def place_museum_artinparadise():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_museum_artinparadise.html", username=username, name=name)
+    return render_template("place_museum_artinparadise.html", username=username)
 
 @app.route("/place_museum_fabricqueen.html")
 def place_museum_fabricqueen():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_museum_fabricqueen.html", username=username, name=name)
+    return render_template("place_museum_fabricqueen.html", username=username)
 
 @app.route("/place_museum_nelsonlib.html")
 def place_museum_nelsonlib():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_museum_nelsonlib.html", username=username, name=name)
+    return render_template("place_museum_nelsonlib.html", username=username)
 
 @app.route("/place_museum_siriraj.html")
 def place_museum_siriraj():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_museum_siriraj.html", username=username, name=name)
+    return render_template("place_museum_siriraj.html", username=username)
 
 @app.route("/place_panaikrung.html")
 def place_panaikrung():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_panaikrung.html", username=username, name=name)
+    return render_template("place_panaikrung.html", username=username)
 
 @app.route("/place_rodfai.html")
 def place_rodfai():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_rodfai.html", username=username, name=name)
+    return render_template("place_rodfai.html", username=username)
 
 @app.route("/place_suanluang.html")
 def place_suanluang():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_suanluang.html", username=username, name=name)
+    return render_template("place_suanluang.html", username=username)
 
 @app.route("/place_watarun.html")
 def place_watarun():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_watarun.html", username=username, name=name)
+    return render_template("place_watarun.html", username=username)
 
 @app.route("/place_watbenjama.html")
 def place_watbenjama():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_watbenjama.html", username=username, name=name)
+    return render_template("place_watbenjama.html", username=username)
 
 @app.route("/place_watgloden.html")
 def place_watgloden():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_watgloden.html", username=username, name=name)
+    return render_template("place_watgloden.html", username=username)
 
 @app.route("/place_watprakeaw.html")
 def place_watprakeaw():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("place_watprakeaw.html", username=username, name=name)
+    return render_template("place_watprakeaw.html", username=username)
 
 @app.route("/type_art_museum.html")
 def type_art_museum():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("type_art_museum.html", username=username, account_name=account_name)
+    return render_template("type_art_museum.html", username=username)
 
 @app.route("/type_market.html")
 def type_market():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("type_market.html", username=username, account_name=account_name)
+    return render_template("type_market.html", username=username)
 
 @app.route("/type_natural.html")
 def type_natural():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("type_natural.html", username=username, account_name=account_name)
+    return render_template("type_natural.html", username=username)
 
 @app.route("/type_religious.html")
 def type_religious():
     username = session.get('username', '')
-    account_name = session.get('account_name','')
-    return render_template("type_religious.html", username=username, account_name=account_name)
+    return render_template("type_religious.html", username=username)
 
 app.secret_key = os.urandom(12)
 @app.route('/login.html', methods=['GET','POST'])
@@ -139,6 +120,7 @@ def login():
                 flash('Login successfully.', 'success')
                 if username:
                     session['username'] = username
+                    session['account_name'] = account_name
                 else:
                     session['username'] = request.form['username']
                 return redirect(url_for('.index'))
