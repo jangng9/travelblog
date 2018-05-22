@@ -24,8 +24,13 @@
     padding: 20px;
 }
 
-.description_type p,h1{
+.description_type p{
     color: #f1f1f1;
+
+}
+
+.description_type h1{
+color: #f1f1f1;
 
 }
 
