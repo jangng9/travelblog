@@ -1,114 +1,13 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>วัดภูเขาทอง</title>
-    <link href="../static/css/main.css" rel="stylesheet">
-    <link href="../static/css/login.css" rel="stylesheet">
-    <link href="../static/css/place.css" rel="stylesheet">
+﻿{% extends "header.html" %}
+{% block title %}Home | Roam{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {{ super() }}
+{% endblock %}
 
-</head>
-<body>
-<header id="header">
-    <section id="page-breadcrumb">
-        <div id="login_block" class="modal">
-            <form class="modal-content animate" method="post" action="">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('login_block').style.display='none'" class="close"
-                          title="Close Modal">&times;</span>
-                    <img src="../static/images/logo.png" alt="logo" class="avatar">
-                </div>
-                <div class="login-container">
-                    <label><b>E-mail</b>
-                        <input type="email" placeholder="Enter E-mail as username" id="username" required>
-                        <p id="warningEmail_login" class="invalid">Invalid Email</p>
-                    </label>
-
-                    <label><b>Password</b>
-                    <input type="password" placeholder="Enter Password" id="password" required>
-                    </label>
-
-
-                    <button type="submit" id="Login">Login</button>
-                </div>
-                <div class="login-bottom">
-                    <span class="fpsw" id="ForgetPass">Forgot <a href="#">password?</a></span>
-                </div>
-            </form>
-        </div>
-
-        <div id="register_block" class="modal2">
-            <form class="modal-content animate" method="post" action="">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('register_block').style.display='none'" class="close"
-                          title="Close Modal">&times;</span>
-                    <img src="../static/images/logo.png" alt="logo" class="avatar">
-                </div>
-                <div class="login-container">
-                    <label for="rusername"><b>E-mail</b>
-                    <input type="email" placeholder="example@gmail.com" id="rusername" required
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" ></label>
-                    <p id="warningEmail" class="invalid">Invalid Email</p>
-
-                    <label for="rname"><b>DisplayName</b>
-                        <input type="text" placeholder="YourDisplayName" id="rname" minlength="4" required
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}">
-                    </label>
-                    <p id="warningName_num" class="invalid">Minimum 4 letters</p>
-                    <p id="warningName_char" class="invalid">Don't use Special Character</p>
-
-                    <label for="rpassword"><b>Password</b>
-                    <input type="password" placeholder="Enter Password" id="rpassword" minlength="6" required
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
-                    </label>
-                    <p id="warningPass" class="invalid">Minimum 6 letters</p>
-
-                    <label for="conpassword"><b>Confirm Password</b>
-                    <input type="password" placeholder="Confirm Password" id="conpassword" minlength="6" required
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
-                    </label>
-                    <p id="warningConPass" class="invalid">Password doesn't match</p>
-
-                    <button type="submit" id="Register" value="Submit">Register</button>
-                </div>
-                <div class="login-bottom">
-                    <span class="fpsw" id="RForgetPass">Forgot <a href="#">password?</a></span>
-                </div>
-            </form>
-        </div>
-
-        <div class="navbar navbar-inverse" role="banner">
-            <table class="navbart">
-                <tr>
-                    <td rowspan="2">
-                        <a class="navbar-brand" href="index.html"><img src="../static/images/logo.png" alt="logo"></a>
-                    </td>
-                    <td>
-                        <div>
-                            <div class="social-icons">
-                                <ul>
-                                    <li onclick="login()"><a href="#modal" class="button-login"> Login</a></li>
-                                    <li onclick="register()"><a href="#modal" class="button-login"> Register |</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="navbarlist overflow">
-                        <ul>
-                            <li><a href="type_religious.html">Religious Sites</a></li>
-                            <li><a href="type_art_museum.html">Art & Museum</a></li>
-                            <li><a href="type_market.html">Market</a></li>
-                            <li><a href="type_natural.html">Natural</a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </section>
-</header>
+{% block body %}
 
 <section id="blog_content" class="padding-bottom">
     <div class="page_header">
@@ -172,15 +71,6 @@
     </div>
 </section>
 
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center bottom-separator">
-                <img src="../static/images/home/under.png" alt="">
-            </div>
-        </div>
-    </div>
-</footer>  
 
 <script>
 function myMap() {
@@ -198,5 +88,4 @@ function myMap() {
 <script language="JavaScript" src="../static/js/slideshow.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2xE0K1JFc3ZSwbEjqG2NfHGiHvRWUin0&callback=myMap"></script>
 
-</body>
-</html>
+{% endblock %}
