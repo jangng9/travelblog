@@ -30,9 +30,11 @@ def place_khlongladmayom():
     username = session.get('username', '')
     return render_template("place_khlongladmayom.html", username=username)
 
-@app.route("/place_museum_artinparadise.html")
+@app.route("/place_museum_artinparadise.html", methods=['GET','POST'])
 def place_museum_artinparadise():
+    error = None
     username = session.get('username', '')
+    '''if request.method == 'POST':'''
     return render_template("place_museum_artinparadise.html", username=username)
 
 @app.route("/place_museum_fabricqueen.html")
