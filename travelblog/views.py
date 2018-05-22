@@ -7,9 +7,8 @@ from travelblog import app
 
 @app.route('/index.html')
 def index():
-    username = session.get('username','')
-    account_name = session.get('account_name','')
-    return render_template("index.html", username=username, account_name=account_name)
+    username = session.get('username','')    
+    return render_template("index.html", username=username)
     
 @app.route("/place_asiatique.html")
 def place_asiatique():
@@ -111,22 +110,20 @@ app.secret_key = os.urandom(12)
 def login():
     error = None
     username = ''
-    password = ''
-    account_name = ''
+    password = ''    
     if request.method == 'POST':
         users = Member_table.query.all()
         for user in users:
             if request.form['password'] == user.password and request.form['username'] == user.username:
                 flash('Login successfully.', 'success')
                 if username:
-                    session['username'] = username
-                    session['account_name'] = account_name
+                    session['username'] = username                    
                 else:
                     session['username'] = request.form['username']
                 return redirect(url_for('.index'))
             else:
                 error = 'Invalid username or password. Please try again.'
-    return render_template('login.html', error=error, username=username, password=password, account_name=account_name)
+    return render_template('login.html', error=error, username=username, password=password)
     
 
 @app.route('/register.html', methods=['GET','POST'])

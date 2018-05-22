@@ -9,12 +9,7 @@
 
 {% block body %}
 <div id="login_block">
-    <form class="modal-content" method="POST" action="">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <h3>{{ messages }}</h3>
-                {% endif %}
-            {% endwith %}
+    <form class="modal-content" method="POST" action="">            
         <div class="login-container">
             <label for="username"><b>E-mail</b></label>
                 <input type="email" placeholder="example@gmail.com" id="username" name="username" required>

@@ -31,3 +31,17 @@ class Member_table(db.Model):
         return "<Username: {}>".format(self.account_name)
 
 
+class User_Fav_table(db.Model):
+    """User Favoutite."""
+    __tablename__ = 'USER_FAV'
+    user_fav_id = db.Column(db.Integer, primary_key=True)
+    account_name = db.Column(db.String(255), nullable=False)
+    file_name = db.Column(db.String(255), nullable=False)
+
+    def __init__(self, account_id, file_id):
+        self.account_name = account_name
+        self.file_name = file_name
+    
+    def __repr__(self):
+        return "<User_fav_id: {}>".format(self.user_fav_id)
+
