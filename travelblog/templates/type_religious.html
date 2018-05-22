@@ -1,85 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Religious Sites</title>
-    <link href="../static/css/main.css" rel="stylesheet">
-    <link href="../static/css/login.css" rel="stylesheet">
-    <link href="../static/css/type.css" rel="stylesheet">
-</head>
-<body>
-<header id="header">
-    <section id="page-breadcrumb">
-        <div id="id01" class="modal">
-            <form class="modal-content animate" action="">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                          title="Close Modal">&times;</span>
-                    <img src="../static/images/logo.png" alt="logo" class="avatar">
-                </div>
-                <div class="login-container">
-                    <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+{% extends "header.html" %} 
+{% block title %}Home | Roam{% endblock %} 
+{% block head %} 
+    {{ super() }} 
+{% endblock %} 
+{% block content %} 
+    {{ super() }} 
+{% endblock %} 
 
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                    <button type="submit">Login</button>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="remember"> Remember me
-                    </label>
-                </div>
-                <div class="login-bottom">
-                    <span class="psw">Forgot <a href="#">password?</a></span>
-                </div>
-            </form>
-        </div>
-
-        <div class="navbar navbar-inverse" role="banner">
-            <table class="navbart">
-                <tr>
-                    <td rowspan="2">
-                        <a class="navbar-brand" href="index.html"><img src="../static/images/logo.png" alt="logo"></a>
-                    </td>
-                    <td>
-                        <div class="overflow">
-                            <div class="social-icons">
-                                <ul>
-                                    <li>
-                                        <div class="search">
-                                            <form role="form">
-                                                <i onclick="showBlock()" class="fa fa-search"></i>
-                                                <div class="field-toggle" id="search-box">
-                                                    <input type="text" class="search-form" autocomplete="off"
-                                                           placeholder="Search">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </li>
-                                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                    <li onclick="login()"><a href="#modal" class="button-login"> LOGIN</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="navbarlist">
-                        <ul>
-                            <li><a href="#">Religious Sites</a></li>
-                            <li><a href="type_art_museum.html">Art & Museum</a></li>
-                            <li><a href="type_maket.html">Market</a></li>
-                            <li><a href="type_natural.html">Natural</a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </section>
-</header>
+{% block body %}
 
 <section id="blog_type" class="padding-bottom">
 
@@ -177,17 +105,5 @@
 
 </section>
 
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center bottom-separator">
-                <img src="../static/images/home/under.png" alt="">
-            </div>
-        </div>
-    </div>
-</footer>
-
 <script language="JavaScript" src="../static/js/script_img_change.js"></script>
-
-</body>
-</html>
+{% endblock %}
