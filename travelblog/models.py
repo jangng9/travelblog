@@ -37,7 +37,7 @@ class User_Fav_table(db.Model):
     account_name = db.Column(db.String(255), primary_key=True)
     file_name = db.Column(db.String(255), primary_key=True)
 
-    def __init__(self, account_id, file_id):
+    def __init__(self, account_name, file_name):
         self.account_name = account_name
         self.file_name = file_name
     
