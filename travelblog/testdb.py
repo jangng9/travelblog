@@ -21,3 +21,14 @@ class Member_table(db.Model):
 
     def __repr__(self):
         return "<Username: {}>".format(self.account_name)
+
+class File_Name_table(db.Model):
+    """File name"""
+    __tablename__ = 'FILE_NAME'
+    file_name = db.Column(db.String(255), primary_key=True)
+
+    def __init__(self, file_name):
+        self.file_name = file_name
+    
+    def __repr__(self):
+        return "<File_Name: {}>".format(self.file_name)
