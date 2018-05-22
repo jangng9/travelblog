@@ -1,124 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Art & Museum</title>
-    <link href="../static/css/main.css" rel="stylesheet">
-    <link href="../static/css/login.css" rel="stylesheet">
-    <link href="../static/css/type.css" rel="stylesheet">
-</head>
+{% extends "header.html" %} 
+{% block title %}Home | Roam{% endblock %} 
+{% block head %} 
+    {{ super() }} 
+{% endblock %} 
+{% block content %} 
+    {{ super() }} 
+{% endblock %} 
 
-<body>
-
-<header id="header">
-    <section id="page-breadcrumb">
-        <div id="login_block" class="modal">
-            <form class="modal-content animate" action="">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('login_block').style.display='none'" class="close"
-                          title="Close Modal">&times;</span>
-                    <img src="../static/images/logo.png" alt="logo" class="avatar">
-                </div>
-                <div class="login-container">
-                    <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                    <button type="submit">Login</button>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="remember"> Remember me
-                    </label>
-                </div>
-                <div class="social-icons">
-                    <ul>
-                        <li><a href=""><img class="fa-facebook" src="../static/images/home/facebook.png"
-                                            onmouseover="hoverfacebook(this);"
-                                            onmouseout="unhoverfacebook(this);"/></a></li>
-                        <li><a href=""><img class="fa-twitter" src="../static/images/home/twitter.png"
-                                            onmouseover="hovertwitter(this);"
-                                            onmouseout="unhovertwitter(this);"/></a></li>
-                    </ul>
-                </div>
-                <div class="login-bottom">
-                    <span class="fpsw">Forgot <a href="#">password?</a></span>
-                </div>
-            </form>
-        </div>
-
-        <div id="register_block" class="modal2">
-            <form class="modal-content animate" action="">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('register_block').style.display='none'" class="close"
-                          title="Close Modal">&times;</span>
-                    <img src="../static/images/logo.png" alt="logo" class="avatar">
-                </div>
-                <div class="login-container">
-                    <label><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required>
-
-                    <label><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
-                    <label><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Confirm Password" name="conpassword" required>
-
-                    <button type="submit">Register</button>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="remember"> Remember me
-                    </label>
-                </div>
-                <div class="social-icons">
-                    <ul>
-                        <li><a href=""><img class="fa-facebook" src="../static/images/home/facebook.png"
-                                            onmouseover="hoverfacebook(this);"
-                                            onmouseout="unhoverfacebook(this);"/></a></li>
-                        <li><a href=""><img class="fa-twitter" src="../static/images/home/twitter.png"
-                                            onmouseover="hovertwitter(this);"
-                                            onmouseout="unhovertwitter(this);"/></a></li>
-                    </ul>
-                </div>
-                <div class="login-bottom">
-                    <span class="fpsw">Forgot <a href="#">password?</a></span>
-                </div>
-            </form>
-        </div>
-
-        <div class="navbar navbar-inverse" role="banner">
-            <table class="navbart">
-                <tr>
-                    <td rowspan="2">
-                        <a class="navbar-brand" href="index.html"><img src="../static/images/logo.png" alt="logo"></a>
-                    </td>
-                    <td>
-                        <div class="overflow">
-                            <div class="social-icons">
-                                <ul>
-                                    <li onclick="login()"><a href="#modal" class="button-login"> Login</a></li>
-                                    <li onclick="register()"><a href="#modal" class="button-login"> Register |</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="navbarlist overflow">
-                        <ul>
-                            <li><a href="index.html">Religious Sites</a></li>
-                            <li><a href="type_art_museum.html">Art & Museum</a></li>
-                            <li><a href="type_market.html">Market</a></li>
-                            <li><a href="type_natural.html">Natural</a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </section>
-</header>
-<!--/#header-->
+{% block body %}
 
 <section id="blog_type" class="padding-bottom">
 
@@ -204,16 +93,5 @@
 
 </section>
 
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center bottom-separator">
-                <img src="../static/images/home/under.png" alt="">
-            </div>
-        </div>
-    </div>
-</footer>
-
 <script language="JavaScript" src="../static/js/script_img_change.js"></script>
-</body>
-</html>
+{% endblock %}
