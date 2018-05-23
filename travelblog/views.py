@@ -62,33 +62,26 @@ def place_museum_siriraj():
     if request.method == "POST":            
         if username == '':
             error = "Please Login first"
-            flash('Please Login first','error')
-        else:
-            flash('You are Login','login')           
-            if alreadylike=='yes':
-                flash('You Like already!!','youlike')
+            flash('Please Login first','loginfirst')
+        else:                       
+            if alreadylike=='yes':                
                 try:
                     db.session.query(User_Fav_table).\
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()
-                    flash('likeremove','removemsg')                                        
+                    db.session.commit()                                                           
                 except:
                     db.session.rollback()
-                    error = "Can't removlike"
-                    flash('Can\'t removelike' , 'error')                                
-            else:
-                flash('Add like','addlike')
+                    error = "Can't removlike"                                                    
+            else:                
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()
-                    flash('Like!','success')                                           
+                    db.session.commit()                                                            
                 except:
                     db.session.rollback()
-                    error = "Can't like"
-                    flash('Can\'t like' , 'error')                                            
+                    error = "Can't like"                                                               
     return render_template("place_museum_siriraj.html", username=username, countmsg=count)
 
 @app.route("/place_panaikrung.html")
