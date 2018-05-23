@@ -1,5 +1,5 @@
 from flask import Flask, render_template, flash, redirect, session, request, url_for
-from .models import Member_table, db
+from .models import Member_table, User_Fav_table, db
 import os
 from travelblog import app
  
@@ -32,7 +32,7 @@ def place_khlongladmayom():
 
 @app.route("/place_museum_artinparadise.html")
 def place_museum_artinparadise():
-    username = session.get('username', '')
+    username = session.get('username', '')               
     return render_template("place_museum_artinparadise.html", username=username)
 
 @app.route("/place_museum_fabricqueen.html")
@@ -45,10 +45,44 @@ def place_museum_nelsonlib():
     username = session.get('username', '')
     return render_template("place_museum_nelsonlib.html", username=username)
 
-@app.route("/place_museum_siriraj.html")
+@app.route("/place_museum_siriraj.html", methods=['GET','POST'])
 def place_museum_siriraj():
     username = session.get('username', '')
-    return render_template("place_museum_siriraj.html", username=username)
+    count = 0
+    error = None
+    likes = User_Fav_table.query.all()
+    alreadylike=''
+    file_name = "place_museum_siriraj"
+    for each_like in likes:
+        if username == each_like.account_name and file_name == each_like.file_name:
+            alreadylike='yes'
+            flash('alreadylike','likemsg')
+        if file_name == each_like.file_name:
+            count = count + 1
+    if request.method == "POST":            
+        if username == '':
+            error = "Please Login first"
+            flash('Please Login first','loginfirst')
+        else:                       
+            if alreadylike=='yes':                
+                try:
+                    db.session.query(User_Fav_table).\
+                    filter(User_Fav_table.account_name == username).\
+                    filter(User_Fav_table.file_name == file_name).\
+                    delete()
+                    db.session.commit()                                                           
+                except:
+                    db.session.rollback()
+                    error = "Can't removlike"                                                    
+            else:                
+                try:
+                    new_like = User_Fav_table(account_name=username, file_name=file_name)
+                    db.session.add(new_like)
+                    db.session.commit()                                                            
+                except:
+                    db.session.rollback()
+                    error = "Can't like"                                                               
+    return render_template("place_museum_siriraj.html", username=username, countmsg=count)
 
 @app.route("/place_panaikrung.html")
 def place_panaikrung():
@@ -110,7 +144,7 @@ app.secret_key = os.urandom(12)
 def login():
     error = None
     username = ''
-    password = ''    
+    password = ''       
     if request.method == 'POST':
         users = Member_table.query.all()
         for user in users:
@@ -123,7 +157,7 @@ def login():
                 return redirect(url_for('.index'))
             else:
                 error = 'Invalid username or password. Please try again.'
-    return render_template('login.html', error=error, username=username, password=password)
+    return render_template('login.html', username=username)
     
 
 @app.route('/register.html', methods=['GET','POST'])

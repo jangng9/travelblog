@@ -8,6 +8,14 @@
 {% endblock %}
 
 {% block body %}
+{% with messages = get_flashed_messages(category_filter=["loginfirst"]) %}
+{% if messages %}
+<script>
+    alert("{{messages}}");
+</script>
+{% endif %}
+{% endwith %}
+  
 <section id="blog_content" class="padding-bottom">
     <div class="page_header">
         <h1>วัดพระศรีรัตนศาสดาราม</h1>
@@ -54,12 +62,36 @@
         </div>
 
         <div class="aside padding-bottom">
+                <span class="likespan">
+                        {% if countmsg %}
+                            <span class="like-num">{{ countmsg }}</span>
+                        {% else %}
+                            <span class="like-num">0</span>
+                        {% endif %}    
+                            <form method="POST" action="">
+                            <span class="fa-heart">
+                                {% with messages = get_flashed_messages(category_filter=["likemsg"]) %}
+                                {% if messages %}                  
+                                <button class="heartbtn" type="submit" value="place_museum_artinparadise"
+                                name="likebtn">
+                                    <img src="../static/images/home/liked.png" 
+                                    onmouseover="unhoverlike(this);"
+                                    onmouseout="hoverlike(this);"/>
+                                </button>
+                                {% else %}
+                                <button class="heartbtn" type="submit" value="place_museum_artinparadise"
+                                name="likebtn">
+                                    <img src="../static/images/home/like.png" 
+                                    onmouseover="hoverlike(this);"
+                                    onmouseout="unhoverlike(this);"/>
+                                </button>
+                                {% endif %}
+                                {% endwith %}
+                            </span>
+                            </form>
+                        </span>
             <span class="post-date">February 14, 2018</span>
-            <span class="like-num">3</span>
-            <span class="fa-heart">
-                <img src="../static/images/home/like.png" onmouseover="hoverlike(this);"
-                     onmouseout="unhoverlike(this);"/>
-            </span>
+            
             <hr>
             <h3>ที่ตั้ง</h3>
             <p>ถนนหน้าพระลาน แขวงพระบรมมหาราชวัง เขตพระนคร 10200</p>

@@ -450,6 +450,15 @@ a.read-more:hover{
     float: right;
 }
 
+.fa-heart .heartbtn{
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
+}
+
 .fa-heart img{
     width: 20px;
     margin-right: 5px;
