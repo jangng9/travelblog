@@ -39,7 +39,7 @@
                                                 {% else %}
                                                     <div id="count"><span class="like-num">0</span></div>
                                                 {% endif %}    
-                                                <form method="POST" action="views_index1.py">
+                                                <form method="POST" action="{{ url_for('place_watarun') }}">
                                                     <span class="fa-heart">                            
                                                         {% if likemsg1 == 'True' %}                  
                                                         <button class="heartbtn" id="heartbtn" type="submit" value="place_museum_artinparadise"
@@ -87,7 +87,7 @@
                                                 {% else %}
                                                     <div id="count"><span class="like-num">0</span></div>
                                                 {% endif %}    
-                                                <form method="POST" action="views_index2.py">
+                                                <form method="POST" action="{{ url_for('place_suanluang') }}">
                                                     <span class="fa-heart">                            
                                                         {% if likemsg2 == 'True' %}                  
                                                         <button class="heartbtn" id="heartbtn" type="submit" value="place_museum_artinparadise"
@@ -142,7 +142,7 @@
                                                 {% else %}
                                                     <div id="count"><span class="like-num">0</span></div>
                                                 {% endif %}    
-                                                <form method="POST" action="views_index3.py">
+                                                <form method="POST" action="{{ url_for('place_museum_artinparadise') }}">
                                                     <span class="fa-heart">                            
                                                         {% if likemsg3 == 'True' %}                  
                                                         <button class="heartbtn" id="heartbtn" type="submit" value="place_museum_artinparadise"
@@ -191,7 +191,7 @@
                                                 {% else %}
                                                     <div id="count"><span class="like-num">0</span></div>
                                                 {% endif %}    
-                                                <form method="POST" action="views_index4.py">
+                                                <form method="POST" action="{{ url_for('place_rodfai') }}">
                                                     <span class="fa-heart">                            
                                                         {% if likemsg4 == 'True' %}                  
                                                         <button class="heartbtn" id="heartbtn" type="submit" value="place_museum_artinparadise"

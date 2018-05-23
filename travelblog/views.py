@@ -41,9 +41,13 @@ def index():
         if username == each_like4.account_name and file_name4 == each_like4.file_name:
             alreadylike4=True         
         if file_name4 == each_like4.file_name:
-            count4 = count4 + 1  
+            count4 = count4 + 1
+    if request.method == "POST":            
+        if username == '':
+            error = "Please Login first"
+            flash('Please Login first','loginfirst')  
     return render_template("index.html", username=username, countmsg1=count1, likemsg1=str(alreadylike1), countmsg2=count2, likemsg2=str(alreadylike2), countmsg3=count3, likemsg3=str(alreadylike3), countmsg4=count4, likemsg4=str(alreadylike4))
-    
+
 @app.route("/place_asiatique.html", methods=['GET','POST'])
 def place_asiatique():
     username = session.get('username', '')
