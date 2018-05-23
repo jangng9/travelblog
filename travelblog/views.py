@@ -34,8 +34,7 @@ def place_khlongladmayom():
 def place_museum_artinparadise():
     username = session.get('username', '')
     error = None
-    count = 0
-    account_like = ''
+    count = 0    
     likes = User_Fav_table.query.all()
     file_name = "place_museum_artinparadise"
     for user_like in likes:
@@ -53,9 +52,10 @@ def place_museum_artinparadise():
                     flash('alreadylike','likemsg')
                 else:        
                     try:
-                        new_like = User_Fav_table(account_name=username, file_name=file_name)
-                        db.session.add(new_like)
-                        db.session.commit()
+                        db.session.query(User_Fav_table).\
+                        filter(User_Fav_table.account_name == username).\
+                        filter(User_Fav_table.file_name == file_name).\
+                        delete()
                         flash('Like!','success')
                         return "success"
                     except:
@@ -79,14 +79,13 @@ def place_museum_nelsonlib():
 def place_museum_siriraj():
     username = session.get('username', '')
     error = None
-    count = 0
-    account_like = ''
+    count = 0    
     likes = User_Fav_table.query.all()
     file_name = "place_museum_siriraj"
-    for user_like in likes:
-        if username == user_like.account_name and file_name == user_like.file_name:
+    for each_like in likes:
+        if username == each_like.account_name and file_name == each_like.file_name:
             flash('alreadylike','likemsg')
-        if file_name == user_like.file_name:
+        if file_name == each_like.file_name:
             count = count + 1    
     if request.method == "POST":            
         if username == '':
@@ -96,8 +95,10 @@ def place_museum_siriraj():
             for user_like in likes:
                 if username == user_like.account_name and file_name == user_like.file_name:
                     try:
-                        remove_like = User_Fav_table(account_name=username, file_name=file_name)
-                        db.session.remove(remove_like)
+                        db.session.query(User_Fav_table).\
+                        filter(User_Fav_table.account_name == username).\
+                        filter(User_Fav_table.file_name == file_name).\
+                        delete()
                         db.session.commit()
                         flash('likeremove','removemsg')
                         return "remove success"
@@ -116,7 +117,7 @@ def place_museum_siriraj():
                         db.session.rollback()
                         error = "Can't like"
                         flash('Can\'t like' , 'error')                         
-    return render_template("place_museum_siriraj.html", username=username, error=error)
+    return render_template("place_museum_siriraj.html", username=username, countmsg=count)
 
 @app.route("/place_panaikrung.html")
 def place_panaikrung():
@@ -176,9 +177,7 @@ def type_religious():
 app.secret_key = os.urandom(12)
 @app.route('/login.html', methods=['GET','POST'])
 def login():
-    error = None
-    username = ''
-    password = ''    
+    error = None        
     if request.method == 'POST':
         users = Member_table.query.all()
         for user in users:
