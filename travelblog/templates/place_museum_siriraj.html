@@ -61,13 +61,17 @@
             </div>
 
         </div>
-
+        <script>
+                $("#heartbtn").click(function() {
+                $("#count").load(" #count");
+              }); 
+        </script>
         <div class="aside padding-bottom">
                 <span class="likespan">                    
                     {% if countmsg %}
                         <div id="count"><span class="like-num">{{ countmsg }}</span></div>
                     {% else %}
-                        <span class="like-num">0</span>
+                        <div id="count"><span class="like-num">0</span></div>
                     {% endif %}    
                     <form method="POST" action="">
                         <span class="fa-heart">
@@ -138,13 +142,6 @@
         </div>
     </div>
 </section>
-
-<script>
-    $("#heartbtn").click(function() {
-    $("#count").load(" #count");
-  }); 
-</script>
-  
 
 <script>
 function myMap() {

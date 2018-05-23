@@ -70,7 +70,7 @@ def place_museum_siriraj():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                           
+                    db.session.commit()                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -78,7 +78,7 @@ def place_museum_siriraj():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                            
+                    db.session.commit()                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"                                                               
