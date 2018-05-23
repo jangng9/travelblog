@@ -10,7 +10,9 @@
 {% block body %}
 {% with messages = get_flashed_messages() %}
 {% if messages %}
-<h3>{{ messages }}</h3>
+<script>
+    alert("{{messages}}");
+</script>
 {% endif %}
 {% endwith %}
 <section id="blog_content" class="padding-bottom">
