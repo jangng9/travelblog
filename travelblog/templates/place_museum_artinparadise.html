@@ -1,5 +1,5 @@
 ﻿{% extends "header.html" %}
-{% block title %}Home | Roam{% endblock %}
+{% block title %}Art in paradise BKK{% endblock %}
 {% block head %}
     {{ super() }}
 {% endblock %}
@@ -8,6 +8,11 @@
 {% endblock %}
 
 {% block body %}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <h3>{{ messages }}</h3>
+                {% endif %}
+            {% endwith %}
 <section id="blog_content" class="padding-bottom">
     <div class="page_header">
         <h1>Art in paradise BKK</h1>
@@ -44,12 +49,21 @@
         </div>
 
         <div class="aside padding-bottom">
-            <span class="post-date">February 14, 2018</span>
-            <span class="like-num">3</span>
-            <span class="fa-heart">
-                <img src="../static/images/home/like.png" onmouseover="hoverlike(this);"
-                     onmouseout="unhoverlike(this);"/>
+            <span class="likespan">
+                <span class="like-num">3</span>
+                <form method="POST" action="">
+                <span class="fa-heart">
+                    <button class="heartbtn" type="submit" value="place_museum_artinparadise"
+                    name="likebtn">
+                        <img src="../static/images/home/like.png" 
+                        onmouseover="hoverlike(this);"
+                        onmouseout="unhoverlike(this);"/>
+                    </button>
+                </span>
+                </form>
             </span>
+            <span class="post-date">February 14, 2018</span>           
+            
             <hr>
             <h3>ที่ตั้ง</h3>
             <p>ชั้น 4 ห้างสรรพสินค้าเอสพลานาด ถนนรัชดาภิเษก เขตห้วยขวาง กรุงเทพฯ 10400 <br><br>
