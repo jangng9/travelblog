@@ -30,40 +30,10 @@ def place_khlongladmayom():
     username = session.get('username', '')
     return render_template("place_khlongladmayom.html", username=username)
 
-@app.route("/place_museum_artinparadise.html", methods=['GET','POST'])
+@app.route("/place_museum_artinparadise.html")
 def place_museum_artinparadise():
-    username = session.get('username', '')
-    error = None
-    count = 0
-    account_like = ''
-    likes = User_Fav_table.query.all()
-    file_name = "place_museum_artinparadise"
-    for user_like in likes:
-        if username == user_like.account_name and file_name == user_like.file_name:
-            flash('alreadylike','likemsg')
-        if file_name == user_like.file_name:
-            count = count + 1    
-    if request.method == "POST":            
-        if username == '':
-            error = "Please Login first"
-            flash('Please Login first','error')
-        else:
-            for user_like in likes:
-                if username == user_like.account_name and file_name == user_like.file_name:
-                    flash('alreadylike','likemsg')
-                else:        
-                    try:
-                        new_like = User_Fav_table(account_name=username, file_name=file_name)
-                        db.session.add(new_like)
-                        db.session.commit()
-                        flash('Like!','success')
-                        return "success"
-                    except:
-                        db.session.rollback()
-                        error = "Can't like"
-                        flash('Can\'t like' , 'error')                
-                        return "unsuccess"              
-    return render_template("place_museum_artinparadise.html", username=username, error=error)
+    username = session.get('username', '')               
+    return render_template("place_museum_artinparadise.html", username=username)
 
 @app.route("/place_museum_fabricqueen.html")
 def place_museum_fabricqueen():
@@ -78,45 +48,48 @@ def place_museum_nelsonlib():
 @app.route("/place_museum_siriraj.html", methods=['GET','POST'])
 def place_museum_siriraj():
     username = session.get('username', '')
-    error = None
     count = 0
-    account_like = ''
+    error = None
     likes = User_Fav_table.query.all()
+    alreadylike=''
     file_name = "place_museum_siriraj"
-    for user_like in likes:
-        if username == user_like.account_name and file_name == user_like.file_name:
+    for each_like in likes:
+        if username == each_like.account_name and file_name == each_like.file_name:
+            alreadylike='yes'
             flash('alreadylike','likemsg')
-        if file_name == user_like.file_name:
-            count = count + 1    
+        if file_name == each_like.file_name:
+            count = count + 1
     if request.method == "POST":            
         if username == '':
             error = "Please Login first"
             flash('Please Login first','error')
         else:
-            for user_like in likes:
-                if username == user_like.account_name and file_name == user_like.file_name:
-                    try:
-                        remove_like = User_Fav_table(account_name=username, file_name=file_name)
-                        db.session.remove(remove_like)
-                        db.session.commit()
-                        flash('likeremove','removemsg')
-                        return "remove success"
-                    except:
-                        db.session.rollback()
-                        error = "Can't removlike"
-                        flash('Can\'t removelike' , 'error')
-                        return "remove unsuccess"                    
-                else:        
-                    try:
-                        new_like = User_Fav_table(account_name=username, file_name=file_name)
-                        db.session.add(new_like)
-                        db.session.commit()
-                        flash('Like!','success')                        
-                    except:
-                        db.session.rollback()
-                        error = "Can't like"
-                        flash('Can\'t like' , 'error')                         
-    return render_template("place_museum_siriraj.html", username=username, error=error)
+            flash('You are Login','login')           
+            if alreadylike=='yes':
+                flash('You Like already!!','youlike')
+                try:
+                    db.session.query(User_Fav_table).\
+                    filter(User_Fav_table.account_name == username).\
+                    filter(User_Fav_table.file_name == file_name).\
+                    delete()
+                    db.session.commit()
+                    flash('likeremove','removemsg')                                        
+                except:
+                    db.session.rollback()
+                    error = "Can't removlike"
+                    flash('Can\'t removelike' , 'error')                                
+            else:
+                flash('Add like','addlike')
+                try:
+                    new_like = User_Fav_table(account_name=username, file_name=file_name)
+                    db.session.add(new_like)
+                    db.session.commit()
+                    flash('Like!','success')                                           
+                except:
+                    db.session.rollback()
+                    error = "Can't like"
+                    flash('Can\'t like' , 'error')                                            
+    return render_template("place_museum_siriraj.html", username=username, countmsg=count)
 
 @app.route("/place_panaikrung.html")
 def place_panaikrung():
@@ -178,7 +151,7 @@ app.secret_key = os.urandom(12)
 def login():
     error = None
     username = ''
-    password = ''    
+    password = ''       
     if request.method == 'POST':
         users = Member_table.query.all()
         for user in users:
@@ -191,7 +164,7 @@ def login():
                 return redirect(url_for('.index'))
             else:
                 error = 'Invalid username or password. Please try again.'
-    return render_template('login.html', error=error, username=username, password=password)
+    return render_template('login.html', username=username)
     
 
 @app.route('/register.html', methods=['GET','POST'])
