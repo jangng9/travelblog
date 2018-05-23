@@ -8,7 +8,11 @@
 {% endblock %}
 
 {% block body %}
-
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<h3>{{ messages }}</h3>
+{% endif %}
+{% endwith %}
 <section id="blog_content" class="padding-bottom">
     <div class="page_header">
         <h1>พิพิธภัณฑ์แพทย์ศิริราช</h1>
@@ -57,12 +61,32 @@
         </div>
 
         <div class="aside padding-bottom">
+                <span class="likespan">
+                        <span class="like-num">3</span>
+                        <form method="POST" action="">
+                        <span class="fa-heart">
+                            {% with messages = get_flashed_messages(category_filter=["likemsg"]) %}
+                            {% if messages %}                  
+                            <button class="heartbtn" type="submit" value="place_museum_artinparadise"
+                            name="likebtn">
+                                <img src="../static/images/home/liked.png" 
+                                onmouseover="unhoverlike(this);"
+                                onmouseout="hoverlike(this);"/>
+                            </button>
+                            {% else %}
+                            <button class="heartbtn" type="submit" value="place_museum_artinparadise"
+                            name="likebtn">
+                                <img src="../static/images/home/like.png" 
+                                onmouseover="hoverlike(this);"
+                                onmouseout="unhoverlike(this);"/>
+                            </button>
+                            {% endif %}
+                            {% endwith %}
+                        </span>
+                        </form>
+                    </span>
             <span class="post-date">February 4, 2018</span>
-            <span class="like-num">3</span>
-            <span class="fa-heart">
-                <img src="../static/images/home/like.png" onmouseover="hoverlike(this);"
-                     onmouseout="unhoverlike(this);"/>
-            </span>
+            
             <hr>
             <h3>ที่ตั้ง</h3>
             <p>2 ถนนวังหลัง แขวงศิริราช เขตบางกอกน้อย กรุงเทพฯ 10700 <br><br>
