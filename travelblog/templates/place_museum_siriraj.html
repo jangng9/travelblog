@@ -70,9 +70,8 @@
                         <div id="count"><span class="like-num">0</span></div>
                     {% endif %}    
                     <form method="POST" action="">
-                        <span class="fa-heart">
-                            {% with messages = get_flashed_messages(category_filter=["likemsg"]) %}
-                            {% if messages %}                  
+                        <span class="fa-heart">                            
+                            {% if likemsg is defined %}                  
                             <button class="heartbtn" id="heartbtn" type="submit" value="place_museum_artinparadise"
                             name="likebtn">
                                 <img src="../static/images/home/liked.png" 
@@ -88,8 +87,7 @@
                                 onmouseout="unhoverlike(this);"
                                 />
                             </button>
-                            {% endif %}
-                            {% endwith %}
+                            {% endif %}                          
                         </span>
                     </form>
                 </span>

@@ -122,15 +122,7 @@ uejn
 
     function unhoverlike(element) {
         element.setAttribute('src', '../static/images/home/like.png');
-    }
-
-    function hoveredit(element) {
-        element.setAttribute('src', '../static/images/home/penciled.png');
-    }
-
-    function unhoveredit(element) {
-        element.setAttribute('src', 'images/home/pencil.png');
-    }
+    } 
 
 
 

@@ -61,8 +61,7 @@ def place_benjakiti():
     file_name = "place_benjakiti"
     for each_like in likes:
         if username == each_like.account_name and file_name == each_like.file_name:
-            alreadylike='yes'
-            flash('alreadylike','likemsg')
+            alreadylike='yes'           
         if file_name == each_like.file_name:
             count = count + 1
     if request.method == "POST":            
@@ -77,6 +76,7 @@ def place_benjakiti():
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
                     db.session.commit()
+                    alreadylike=''                   
                     return redirect(url_for('place_benjakiti'))                                                                           
                 except:
                     db.session.rollback()
@@ -90,7 +90,7 @@ def place_benjakiti():
                 except:
                     db.session.rollback()
                     error = "Can't like"
-    return render_template("place_benjakiti.html", username=username, countmsg=count)
+    return render_template("place_benjakiti.html", username=username, countmsg=count, likemsg=alreadylike)
 
 @app.route("/place_dusit.html", methods=['GET','POST'])
 def place_dusit():
