@@ -71,7 +71,7 @@
                     {% endif %}    
                     <form method="POST" action="">
                         <span class="fa-heart">                            
-                            {% if likemsg is defined %}                  
+                            {% if likemsg == 'True' %}                  
                             <button class="heartbtn" id="heartbtn" type="submit" value="place_museum_artinparadise"
                             name="likebtn">
                                 <img src="../static/images/home/liked.png" 

@@ -57,11 +57,11 @@ def place_benjakiti():
     count = 0
     error = None
     likes = User_Fav_table.query.all()
-    alreadylike=''
+    alreadylike=False
     file_name = "place_benjakiti"
     for each_like in likes:
         if username == each_like.account_name and file_name == each_like.file_name:
-            alreadylike='yes'           
+            alreadylike=True           
         if file_name == each_like.file_name:
             count = count + 1
     if request.method == "POST":            
@@ -69,14 +69,14 @@ def place_benjakiti():
             error = "Please Login first"
             flash('Please Login first','loginfirst')
         else:                       
-            if alreadylike=='yes':                
+            if alreadylike==True:                
                 try:
                     db.session.query(User_Fav_table).\
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
                     db.session.commit()
-                    alreadylike=''                   
+                    alreadylike=False                                   
                     return redirect(url_for('place_benjakiti'))                                                                           
                 except:
                     db.session.rollback()
@@ -90,7 +90,7 @@ def place_benjakiti():
                 except:
                     db.session.rollback()
                     error = "Can't like"
-    return render_template("place_benjakiti.html", username=username, countmsg=count, likemsg=alreadylike)
+    return render_template("place_benjakiti.html", username=username, countmsg=count, likemsg=str(alreadylike))
 
 @app.route("/place_dusit.html", methods=['GET','POST'])
 def place_dusit():
