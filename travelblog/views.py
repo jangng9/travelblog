@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, redirect, session, request, url
 from .models import Member_table, User_Fav_table, db
 import os
 from travelblog import app
+from selenium import webdriver
  
 @app.route('/')
 
