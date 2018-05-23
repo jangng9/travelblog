@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, redirect, session, request, url
 from .models import Member_table, User_Fav_table, db
 import os
 from travelblog import app
+from selenium import webdriver
  
 @app.route('/')
 
@@ -96,16 +97,17 @@ def place_museum_siriraj():
             for user_like in likes:
                 if username == user_like.account_name and file_name == user_like.file_name:
                     try:
-                        remove_like = User_Fav_table(account_name=username, file_name=file_name)
-                        db.session.remove(remove_like)
+                        db.session.query(User_Fav_table).\
+                        filter(User_Fav_table.account_name == username).\
+                        filter(User_Fav_table.file_name == file_name).\
+                        delete()
+                        '''remove_like = User_Fav_table(account_name=username, file_name=file_name)'''
                         db.session.commit()
                         flash('likeremove','removemsg')
-                        return "remove success"
                     except:
                         db.session.rollback()
                         error = "Can't removlike"
-                        flash('Can\'t removelike' , 'error')
-                        return "remove unsuccess"                    
+                        flash('Can\'t removelike' , 'error')                                           
                 else:        
                     try:
                         new_like = User_Fav_table(account_name=username, file_name=file_name)
@@ -223,3 +225,4 @@ def logout():
     session['username'] = ''
     flash('You were logged out')
     return redirect(url_for('index'))
+
