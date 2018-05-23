@@ -652,7 +652,7 @@ def register():
             session['password'] = password
             session['account_name'] = account_name
             flash('Register Successfully', 'success')
-            return render_template("login.html")
+            return redirect(url_for('.login'))
         except:
             db.session.rollback()
             error = "Username or Password already exists."

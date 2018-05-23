@@ -1,4 +1,4 @@
-
+uejn
     //Validate Before Register
     //When User Click
     var usernameInput = document.getElementById('rusername');
