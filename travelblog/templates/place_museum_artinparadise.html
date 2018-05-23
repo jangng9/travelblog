@@ -50,7 +50,11 @@
 
         <div class="aside padding-bottom">
             <span class="likespan">
-                <span class="like-num">3</span>
+                {% if countmsg %}
+                <span class="like-num">{{ countmsg }}</span>
+                {% else %}
+                <span class="like-num">0</span>
+                {% endif %}
                 <form method="POST" action="">
                 <span class="fa-heart">
                     {% with messages = get_flashed_messages(category_filter=["likemsg"]) %}

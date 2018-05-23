@@ -2,7 +2,6 @@ from flask import Flask, render_template, flash, redirect, session, request, url
 from .models import Member_table, User_Fav_table, db
 import os
 from travelblog import app
-from selenium import webdriver
  
 @app.route('/')
 
@@ -64,7 +63,7 @@ def place_museum_artinparadise():
                         error = "Can't like"
                         flash('Can\'t like' , 'error')                
                         return "unsuccess"              
-    return render_template("place_museum_artinparadise.html", username=username, error=error)
+    return render_template("place_museum_artinparadise.html", username=username, error=error, countmsg=count)
 
 @app.route("/place_museum_fabricqueen.html")
 def place_museum_fabricqueen():
@@ -81,14 +80,14 @@ def place_museum_siriraj():
     username = session.get('username', '')
     error = None
     count = 0
-    account_like = ''
+    countmsg = ''    
     likes = User_Fav_table.query.all()
     file_name = "place_museum_siriraj"
     for user_like in likes:
         if username == user_like.account_name and file_name == user_like.file_name:
             flash('alreadylike','likemsg')
         if file_name == user_like.file_name:
-            count = count + 1    
+            count = count + 1                         
     if request.method == "POST":            
         if username == '':
             error = "Please Login first"
@@ -118,7 +117,7 @@ def place_museum_siriraj():
                         db.session.rollback()
                         error = "Can't like"
                         flash('Can\'t like' , 'error')                         
-    return render_template("place_museum_siriraj.html", username=username, error=error)
+    return render_template("place_museum_siriraj.html", username=username, error=error, countmsg=count)
 
 @app.route("/place_panaikrung.html")
 def place_panaikrung():
