@@ -1,9 +1,7 @@
 from flask import Flask, render_template, flash, redirect, session, request, url_for
 from .models import Member_table, User_Fav_table, db
 import os
-from travelblog import app
- 
-@app.route('/')
+from travelblog import app 
 
 @app.route('/index.html', methods=['GET','POST'])
 def index():

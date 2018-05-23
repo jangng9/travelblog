@@ -7,8 +7,42 @@ from travelblog import app
 
 @app.route('/index.html', methods=['GET','POST'])
 def index():
-    username = session.get('username','')    
-    return render_template("index.html", username=username)
+    username = session.get('username','')
+    count1 = 0
+    count2 = 0
+    count3 = 0
+    count4 = 0
+    error = None
+    likes = User_Fav_table.query.all()
+    alreadylike1=False
+    alreadylike2=False
+    alreadylike3=False
+    alreadylike4=False
+    file_name1 = "place_watarun"
+    file_name2 = "place_suanluang"
+    file_name3 = "place_museum_artinparadise"
+    file_name4 = "place_rodfai"
+    for each_like1 in likes:
+        if username == each_like1.account_name and file_name1 == each_like1.file_name:
+            alreadylike1=True         
+        if file_name1 == each_like1.file_name:
+            count1 = count1 + 1  
+    for each_like2 in likes:
+        if username == each_like2.account_name and file_name2 == each_like2.file_name:
+            alreadylike2=True         
+        if file_name2 == each_like2.file_name:
+            count2 = count2 + 1
+    for each_like3 in likes:
+        if username == each_like3.account_name and file_name3 == each_like3.file_name:
+            alreadylike3=True         
+        if file_name3 == each_like3.file_name:
+            count3 = count3 + 1
+    for each_like4 in likes:
+        if username == each_like4.account_name and file_name4 == each_like4.file_name:
+            alreadylike4=True         
+        if file_name4 == each_like4.file_name:
+            count4 = count4 + 1  
+    return render_template("index.html", username=username, countmsg1=count1, likemsg1=str(alreadylike1), countmsg2=count2, likemsg2=str(alreadylike2), countmsg3=count3, likemsg3=str(alreadylike3), countmsg4=count4, likemsg4=str(alreadylike4))
     
 @app.route("/place_asiatique.html", methods=['GET','POST'])
 def place_asiatique():
