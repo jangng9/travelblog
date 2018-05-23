@@ -53,12 +53,23 @@
                 <span class="like-num">3</span>
                 <form method="POST" action="">
                 <span class="fa-heart">
+                    {% with messages = get_flashed_messages(category_filter=["likemsg"]) %}
+                    {% if messages %}                  
+                    <button class="heartbtn" type="submit" value="place_museum_artinparadise"
+                    name="likebtn">
+                        <img src="../static/images/home/liked.png" 
+                        onmouseover="unhoverlike(this);"
+                        onmouseout="hoverlike(this);"/>
+                    </button>
+                    {% else %}
                     <button class="heartbtn" type="submit" value="place_museum_artinparadise"
                     name="likebtn">
                         <img src="../static/images/home/like.png" 
                         onmouseover="hoverlike(this);"
                         onmouseout="unhoverlike(this);"/>
                     </button>
+                    {% endif %}
+                    {% endwith %}
                 </span>
                 </form>
             </span>

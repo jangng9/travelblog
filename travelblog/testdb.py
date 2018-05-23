@@ -34,4 +34,4 @@ class User_Fav_table(db.Model):
         self.file_name = file_name
     
     def __repr__(self):
-        return "<User_fav_id: {}>".format(self.account_name)
+        return "<User_fav_id: {}>".format(self.file_name, self.account_name)
