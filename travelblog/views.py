@@ -5,12 +5,12 @@ from travelblog import app
  
 @app.route('/')
 
-@app.route('/index.html')
+@app.route('/index.html', methods=['GET','POST'])
 def index():
     username = session.get('username','')    
     return render_template("index.html", username=username)
     
-@app.route("/place_asiatique.html")
+@app.route("/place_asiatique.html", methods=['GET','POST'])
 def place_asiatique():
     username = session.get('username', '')
     count = 0
@@ -35,7 +35,8 @@ def place_asiatique():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_asiatique'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -43,13 +44,14 @@ def place_asiatique():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_asiatique'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_asiatique.html", username=username, countmsg=count)
 
-@app.route("/place_benjakiti.html")
+@app.route("/place_benjakiti.html", methods=['GET','POST'])
 def place_benjakiti():
     username = session.get('username', '')
     count = 0
@@ -74,7 +76,8 @@ def place_benjakiti():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_benjakiti'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -82,13 +85,14 @@ def place_benjakiti():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_benjakiti'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_benjakiti.html", username=username, countmsg=count)
 
-@app.route("/place_dusit.html")
+@app.route("/place_dusit.html", methods=['GET','POST'])
 def place_dusit():
     username = session.get('username', '')
     count = 0
@@ -113,7 +117,8 @@ def place_dusit():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_dusit'))                                                                              
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -121,13 +126,14 @@ def place_dusit():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_dusit'))                                                                                   
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_dusit.html", username=username, countmsg=count)
 
-@app.route("/place_khlongladmayom.html")
+@app.route("/place_khlongladmayom.html", methods=['GET','POST'])
 def place_khlongladmayom():
     username = session.get('username', '')
     count = 0
@@ -152,7 +158,8 @@ def place_khlongladmayom():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_khlongladmayom'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -160,13 +167,14 @@ def place_khlongladmayom():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_khlongladmayom'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_khlongladmayom.html", username=username, countmsg=count)
 
-@app.route("/place_museum_artinparadise.html")
+@app.route("/place_museum_artinparadise.html", methods=['GET','POST'])
 def place_museum_artinparadise():
     username = session.get('username', '')
     count = 0
@@ -191,7 +199,8 @@ def place_museum_artinparadise():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_museum_artinparadise'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -199,13 +208,14 @@ def place_museum_artinparadise():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_museum_artinparadise'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"               
     return render_template("place_museum_artinparadise.html", username=username, countmsg=count)
 
-@app.route("/place_museum_fabricqueen.html")
+@app.route("/place_museum_fabricqueen.html", methods=['GET','POST'])
 def place_museum_fabricqueen():
     username = session.get('username', '')
     count = 0
@@ -230,7 +240,8 @@ def place_museum_fabricqueen():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_museum_fabricqueen'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -238,13 +249,14 @@ def place_museum_fabricqueen():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_museum_fabricqueen'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_museum_fabricqueen.html", username=username, countmsg=count)
 
-@app.route("/place_museum_nelsonlib.html")
+@app.route("/place_museum_nelsonlib.html", methods=['GET','POST'])
 def place_museum_nelsonlib():
     username = session.get('username', '')
     count = 0
@@ -269,7 +281,8 @@ def place_museum_nelsonlib():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_museum_nelsonlib'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -277,7 +290,8 @@ def place_museum_nelsonlib():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_museum_nelsonlib'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
@@ -308,7 +322,9 @@ def place_museum_siriraj():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    flash('removelike','likemsg')
+                    return redirect(url_for('place_museum_siriraj'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -316,13 +332,14 @@ def place_museum_siriraj():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_museum_siriraj'))                                                                                 
                 except:
                     db.session.rollback()
                     error = "Can't like"                                                               
     return render_template("place_museum_siriraj.html", username=username, countmsg=count)
 
-@app.route("/place_panaikrung.html")
+@app.route("/place_panaikrung.html", methods=['GET','POST'])
 def place_panaikrung():
     username = session.get('username', '')
     count = 0
@@ -347,7 +364,8 @@ def place_panaikrung():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_panaikrung'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -355,13 +373,14 @@ def place_panaikrung():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_panaikrung'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_panaikrung.html", username=username, countmsg=count)
 
-@app.route("/place_rodfai.html")
+@app.route("/place_rodfai.html", methods=['GET','POST'])
 def place_rodfai():
     username = session.get('username', '')
     count = 0
@@ -386,7 +405,8 @@ def place_rodfai():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_rodfai'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -394,13 +414,14 @@ def place_rodfai():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_rodfai'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_rodfai.html", username=username, countmsg=count)
 
-@app.route("/place_suanluang.html")
+@app.route("/place_suanluang.html", methods=['GET','POST'])
 def place_suanluang():
     username = session.get('username', '')
     count = 0
@@ -425,7 +446,8 @@ def place_suanluang():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_suanluang'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -433,13 +455,14 @@ def place_suanluang():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_suanluang'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_suanluang.html", username=username, countmsg=count)
 
-@app.route("/place_watarun.html")
+@app.route("/place_watarun.html", methods=['GET','POST'])
 def place_watarun():
     username = session.get('username', '')
     count = 0
@@ -464,7 +487,8 @@ def place_watarun():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_watarun'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -472,13 +496,14 @@ def place_watarun():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_watarun'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_watarun.html", username=username, countmsg=count)
 
-@app.route("/place_watbenjama.html")
+@app.route("/place_watbenjama.html", methods=['GET','POST'])
 def place_watbenjama():
     username = session.get('username', '')
     count = 0
@@ -503,7 +528,8 @@ def place_watbenjama():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_watbenjama'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -511,13 +537,14 @@ def place_watbenjama():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_watbenjama'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_watbenjama.html", username=username, countmsg=count)
 
-@app.route("/place_watgloden.html")
+@app.route("/place_watgloden.html", methods=['GET','POST'])
 def place_watgloden():
     username = session.get('username', '')
     count = 0
@@ -542,7 +569,8 @@ def place_watgloden():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_watgloden'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -550,13 +578,14 @@ def place_watgloden():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_watgloden'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
     return render_template("place_watgloden.html", username=username, countmsg=count)
 
-@app.route("/place_watprakeaw.html")
+@app.route("/place_watprakeaw.html", methods=['GET','POST'])
 def place_watprakeaw():
     username = session.get('username', '')
     count = 0
@@ -581,7 +610,8 @@ def place_watprakeaw():
                     filter(User_Fav_table.account_name == username).\
                     filter(User_Fav_table.file_name == file_name).\
                     delete()
-                    db.session.commit()                                                                           
+                    db.session.commit()
+                    return redirect(url_for('place_watprakeaw'))                                                                           
                 except:
                     db.session.rollback()
                     error = "Can't removlike"                                                    
@@ -589,7 +619,8 @@ def place_watprakeaw():
                 try:
                     new_like = User_Fav_table(account_name=username, file_name=file_name)
                     db.session.add(new_like)
-                    db.session.commit()                                                                                
+                    db.session.commit()
+                    return redirect(url_for('place_watprakeaw'))                                                                                
                 except:
                     db.session.rollback()
                     error = "Can't like"
