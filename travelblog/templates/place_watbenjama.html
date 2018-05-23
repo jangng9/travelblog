@@ -8,6 +8,14 @@
 {% endblock %}
 
 {% block body %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<script>
+    alert("{{messages}}");
+</script>
+{% endif %}
+{% endwith %}
+  
 
 <section id="blog_content" class="padding-bottom">
     <div class="page_header">
