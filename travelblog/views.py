@@ -36,20 +36,21 @@ def place_museum_artinparadise():
     error = None
     count = 0
     account_like = ''
-    if request.method == "POST":
-        likes = User_Fav_table.query.all()
-        file_name = "place_museum_artinparadise"
-        for each_like in likes:
-            if file_name == each_like.file_name:
-                count = count + 1
+    likes = User_Fav_table.query.all()
+    file_name = "place_museum_artinparadise"
+    for user_like in likes:
+        if username == user_like.account_name and file_name == user_like.file_name:
+            flash('alreadylike','likemsg')
+        if file_name == user_like.file_name:
+            count = count + 1    
+    if request.method == "POST":            
         if username == '':
             error = "Please Login first"
             flash('Please Login first','error')
         else:
-            likes = User_Fav_table.query.all()
             for user_like in likes:
                 if username == user_like.account_name and file_name == user_like.file_name:
-                    return "already like"
+                    flash('alreadylike','likemsg')
                 else:        
                     try:
                         new_like = User_Fav_table(account_name=username, file_name=file_name)
@@ -74,10 +75,48 @@ def place_museum_nelsonlib():
     username = session.get('username', '')
     return render_template("place_museum_nelsonlib.html", username=username)
 
-@app.route("/place_museum_siriraj.html")
+@app.route("/place_museum_siriraj.html", methods=['GET','POST'])
 def place_museum_siriraj():
     username = session.get('username', '')
-    return render_template("place_museum_siriraj.html", username=username)
+    error = None
+    count = 0
+    account_like = ''
+    likes = User_Fav_table.query.all()
+    file_name = "place_museum_siriraj"
+    for user_like in likes:
+        if username == user_like.account_name and file_name == user_like.file_name:
+            flash('alreadylike','likemsg')
+        if file_name == user_like.file_name:
+            count = count + 1    
+    if request.method == "POST":            
+        if username == '':
+            error = "Please Login first"
+            flash('Please Login first','error')
+        else:
+            for user_like in likes:
+                if username == user_like.account_name and file_name == user_like.file_name:
+                    try:
+                        remove_like = User_Fav_table(account_name=username, file_name=file_name)
+                        db.session.remove(remove_like)
+                        db.session.commit()
+                        flash('likeremove','removemsg')
+                        return "remove success"
+                    except:
+                        db.session.rollback()
+                        error = "Can't removlike"
+                        flash('Can\'t removelike' , 'error')
+                        return "remove unsuccess"                    
+                else:        
+                    try:
+                        new_like = User_Fav_table(account_name=username, file_name=file_name)
+                        db.session.add(new_like)
+                        db.session.commit()
+                        flash('Like!','success')                        
+                    except:
+                        db.session.rollback()
+                        error = "Can't like"
+                        flash('Can\'t like' , 'error')                         
+    return render_template("place_museum_siriraj.html", username=username, error=error)
 
 @app.route("/place_panaikrung.html")
 def place_panaikrung():
